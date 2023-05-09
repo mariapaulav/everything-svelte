@@ -6,6 +6,10 @@
     let isNavShowing = false;
 </script>
 
+<svelte:head>
+    
+</svelte:head>
+
 <!-- Mobile Nav Control -->
 
 <button    
