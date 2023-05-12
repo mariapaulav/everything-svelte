@@ -11,7 +11,9 @@ import Search from "$lib/components/Search.svelte";
   <title>Invoices | The Dollar Holler</title>
 </svelte:head>
 
-<div class="flex justify-between items-center mb-16">
+<div
+  class="flex flex-col-reverse md:flex-row justify-between items-start md:items-center mb-7 md:mb-16 gap-y-6 md:gap-y-4"
+>
   <!-- search field -->
 
   <Search />
@@ -20,7 +22,7 @@ import Search from "$lib/components/Search.svelte";
 
   <div>
     <button
-      class="relative whitespace-nowrap rounded-lg bg-lavenderIndigo px-10 py-3 font-sanSerif text-xl font-black text-white shadow-colored hover:shadow-coloredHover translate-y-0 hover:-translate-y-2 transition-all"
+      class="relative whitespace-nowrap rounded-lg bg-lavenderIndigo lg:px-10 lg:py-3 font-sanSerif lg:text-xl text-base px-5 py-2 font-black text-white shadow-colored hover:shadow-coloredHover translate-y-0 hover:-translate-y-2 transition-all"
       >+ Invoice</button
     >
   </div>
@@ -29,7 +31,7 @@ import Search from "$lib/components/Search.svelte";
 <!-- List of invoices -->
 <div>
   <!-- header -->
-  <div class="table-header invoice-table text-daisyBush">
+  <div class="table-header hidden lg:grid invoice-table text-daisyBush">
     <h3>Status</h3>
     <h3>Due Date</h3>
     <h3>ID</h3>
@@ -39,18 +41,20 @@ import Search from "$lib/components/Search.svelte";
     <div />
   </div>
   <!-- Invoices -->
-  <div class="invoice-table items-center bg-white py-6 rounded-lg shadow-tableRow">
-    <div><Tag label="late" /></div>
-    <div class="text-lg">8/1/2022</div>
-    <div class="text-lg">12345</div>
-    <div class="text-lg font-bold">Compressed.fm</div>
-    <div class="text-lg font-bold font-mono">$504.00</div>
-    <div class="text-lg center">
+  <div
+    class="invoice-table invoice-row items-center bg-white py-3 lg:py-6 rounded-lg shadow-tableRow"
+  >
+    <div class="status"><Tag label="late" className="ml-auto lg:ml-0" /></div>
+    <div class="text-sm lg:text-lg dueDate">8/1/2022</div>
+    <div class="text-sm lg:text-lg invoiceNumber">12345</div>
+    <div class="text-base lg:text-lg font-bold clientName">Compressed.fm</div>
+    <div class="text-sm lg:text-lg font-bold font-mono amount text-right">$504.00</div>
+    <div class="text-sm lg:text-lg center viewButton hidden lg:block">
       <a href="#" class=" text-pastelPurple hover:text-daisyBush">
         <View />
       </a>
     </div>
-    <div class="text-lg center">
+    <div class="text-lg center moreButton hidden lg:block">
       <button class=" text-pastelPurple hover:text-daisyBush">
         <ThreeDots />
       </button>
@@ -64,5 +68,48 @@ import Search from "$lib/components/Search.svelte";
     .table-header h3 {
         @apply text-xl font-black leading-snug;
     }
+
+    .invoice-row {
+      grid-template-areas: 
+        'invoiceNumber invoiceNumber'
+        'clientName amount'
+        'dueDate status';
+    }
+
+    @media (min-width: 1024px ){
+      .invoice-row {
+        grid-template-areas: 'status dueDate invoiceNumber clientName amount viewButton moreButton';
+      }
+    }
+
+    .invoice-row .status {
+      grid-area: status;
+    }
+
+    .invoice-row .dueDate {
+      grid-area: dueDate;
+    }
+
+    .invoice-row .invoiceNumber {
+      grid-area: invoiceNumber;
+    }
+
+    .invoice-row .clientName {
+      grid-area: clientName;
+    }
+
+    .invoice-row .amount {
+      grid-area: amount;
+    }
+
+    .invoice-row .viewButton {
+      grid-area: viewButton;
+    }
+
+    .invoice-row .moreButton {
+      grid-area: moreButton;
+    }
+
+
 
 </style>
