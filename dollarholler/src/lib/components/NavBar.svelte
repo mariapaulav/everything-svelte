@@ -7,7 +7,13 @@
 </script>
 
 <svelte:head>
-    
+    {#if isNavShowing}
+        <style lang="postcss">
+            body {
+                @apply overflow-hidden md:overflow-auto
+            }
+        </style>
+    {/if}
 </svelte:head>
 
 <!-- Mobile Nav Control -->
@@ -26,7 +32,7 @@
 </button>
 
 
-<header class="absolute z-navBar md:relative md:col-span-3 bg-daisyBush text-center w-full h-screen -translate-x-full md:translate-x-0 transition-transform"
+<header class="fixed z-navBar md:relative md:col-span-3 bg-daisyBush text-center w-full h-full -translate-x-full md:translate-x-0 transition-transform"
 class:translate-x-0={isNavShowing}
 >
 <div class="mt-10 mb-10 md:mb-24">
