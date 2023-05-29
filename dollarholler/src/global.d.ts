@@ -5,7 +5,7 @@ interface Invoice {
     client: Client
     dueDate: string
     subject?: string
-    lineItems?: LineItems[]
+    lineItems?: LineItem[]
     notes?: string
     terms?: string
     createdAt: string
