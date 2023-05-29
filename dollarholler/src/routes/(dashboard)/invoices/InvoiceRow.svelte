@@ -1,22 +1,30 @@
 <script lang="ts">
-    import Tag from "$lib/components/Tag.svelte";
-    import ThreeDots from "$lib/components/icon/ThreeDots.svelte";
-    import View from "$lib/components/icon/View.svelte";
-    import { isLate } from "$lib/utils/dateHelpers";
-    import { centsToDollars, sumLineItems } from "$lib/utils/moneyHelpers";
-    export let invoice: Invoice;
+  import AdditionalOptions from "$lib/components/AdditionalOptions.svelte";
+  import Tag from "$lib/components/Tag.svelte";
+  import ThreeDots from "$lib/components/icon/ThreeDots.svelte";
+  import View from "$lib/components/icon/View.svelte";
+  import { isLate } from "$lib/utils/dateHelpers";
+  import { centsToDollars, sumLineItems } from "$lib/utils/moneyHelpers";
 
-  const getInvoiceLabel = (invoice:Invoice)  => {
-      if (invoice.invoiceStatus === 'draft') {
-        return 'draft';
-      } else if (invoice.invoiceStatus === 'sent' && !isLate(invoice.dueDate)) {
-        return 'sent';
-      } else if (invoice.invoiceStatus === 'sent' && isLate(invoice.dueDate)) {
-        return 'late';
-      } else if (invoice.invoiceStatus === 'paid') {
-        return 'paid';
-      }
-    };
+  export let invoice: Invoice;
+
+  let isAdditionalMenuShowing = false;
+
+  const handleDelete = () => {console.log('deleting')};
+  const handleEdit = () => {console.log('Editing')};
+  const handleSendInvoice = () => {console.log('Sending')};
+
+  const getInvoiceLabel = ()  => {
+    if (invoice.invoiceStatus === 'draft') {
+      return 'draft';
+    } else if (invoice.invoiceStatus === 'sent' && !isLate(invoice.dueDate)) {
+      return 'sent';
+    } else if (invoice.invoiceStatus === 'sent' && isLate(invoice.dueDate)) {
+      return 'late';
+    } else if (invoice.invoiceStatus === 'paid') {
+      return 'paid';
+    }
+  };
 
 </script>
 
@@ -33,10 +41,17 @@
       <View />
     </a>
   </div>
-  <div class="text-lg center moreButton hidden lg:flex">
-    <button class=" text-pastelPurple hover:text-daisyBush">
+  <div class="text-lg center moreButton hidden lg:flex relative">
+    <button class=" text-pastelPurple hover:text-daisyBush" on:click={() =>  {isAdditionalMenuShowing = !isAdditionalMenuShowing}}>
       <ThreeDots />
     </button>
+    {#if isAdditionalMenuShowing}
+      <AdditionalOptions options={[
+        {label:'Edit', icon: Edit, onClick: handleEdit, disabled: isOptionsDisabled},
+        {label:'Delete', icon: Trash, onClick: handleDelete, disabled: false},
+        {label:'Send', icon: Send, onClick: handleSendInvoice, disabled: isOptionsDisabled}
+        ]}/>
+    {/if}
   </div>
 </div>
 
