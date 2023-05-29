@@ -1,5 +1,5 @@
 interface Invoice {
-    invoiceStatus: InvoiceStatus
+    invoiceStatus?: InvoiceStatus
     issueDate: string
     invoiceNumber: string
     client: Client
