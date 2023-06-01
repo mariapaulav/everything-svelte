@@ -1,0 +1,1 @@
+<div class="block bg-prim h-[75px] w-full rounded-lg mb-5"></div>
