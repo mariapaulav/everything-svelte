@@ -9,6 +9,7 @@ interface Invoice {
     notes?: string
     terms?: string
     createdAt: string
+    id: string
 }
 
 interface Client {
