@@ -19,6 +19,7 @@ export default {
       boxShadow: {
         colored: '0px 7px 16px rgba(127, 91, 220, 0.002)',
         coloredHover: '0px 16px 25px rgba(127, 91, 220, 0.3)',
+        slidePanel: '-4px 0px 44px rgba(0, 0, 0, 0.35)',
         tableRow: '0px 0px 6px rgba(0, 0, 0, 0.16)'
       },
       colors: {
@@ -44,9 +45,10 @@ export default {
       },
       zIndex: {
         modal: 999,
-        overlay: 998,
+        overlay: 997,
         navBarToggle: 91,
-        navBar: 90
+        navBar: 90,
+        slidePanel: 998
       }
     }
   },

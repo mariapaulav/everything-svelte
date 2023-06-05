@@ -7,7 +7,10 @@
   import { centsToDollars, sumInvoices } from "$lib/utils/moneyHelpers";
   import BlankState from "./BlankState.svelte";
   import InvoiceRowHeader from "./InvoiceRowHeader.svelte";
-    import Button from "$lib/components/Button.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import SlidePanel from "$lib/components/SlidePanel.svelte";
+
+  let isInvoiceFormShowing :boolean = false;
 
   onMount(()=> {
     loadInvoices()
@@ -29,7 +32,7 @@
   {/if}
   <!-- new invoice button -->
   <div>
-    <Button label='+ Invoice' onClick={()=> {}} />
+    <Button label='+ Invoice' onClick={()=> {isInvoiceFormShowing = true}} />
   </div>
 </div>
 
@@ -51,3 +54,8 @@
   {/if}
 </div>
 
+{#if isInvoiceFormShowing}
+<SlidePanel on:closePanel = {() => {isInvoiceFormShowing = false}}>
+  Hi
+</SlidePanel>
+{/if}
