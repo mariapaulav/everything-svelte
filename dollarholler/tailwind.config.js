@@ -11,7 +11,11 @@ export default {
       backgroundImage: {
         arrowLefttUp: "url('/images/arrow-left-up.svg')",
         arrowRightUp: "url('/images/arrow-right-up.svg')",
-        circle: "url('/images/circle.svg')"
+        circle: "url('/images/circle.svg')",
+        chevronDown: "url('/images/chevron-down.svg')"
+      },
+      backgroundPosition: {
+        'right-center': '97% center'
       },
       borderWidth: {
         1: '1px'
