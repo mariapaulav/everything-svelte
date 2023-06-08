@@ -2,7 +2,7 @@
     import Button from "$lib/components/Button.svelte";
 
 </script>
-<h2>Add an invoice</h2>
+<h2 class="mb-7 font-sanSerif text-3xl font-bold text-daisyBush">Add an invoice</h2>
 
 <form>
     <!-- client -->
