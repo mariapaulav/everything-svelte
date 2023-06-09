@@ -23,9 +23,9 @@ interface Client {
     zip: string
 }
 
-interface lineItems {
+interface LineItem {
     id: string
     description: string
-    quantity: string
-    amount: string
+    quantity: number
+    amount: number
 }
