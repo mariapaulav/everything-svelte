@@ -22,6 +22,10 @@
        lineItems = lineItems.filter((item) => item.id !== event.detail)
     }
 
+    const UpdateLineItem = () => {
+      lineItems = lineItems;
+    }
+
 </script>
 
 <h2 class="mb-7 font-sanSerif text-3xl font-bold text-daisyBush">Add an invoice</h2>
@@ -60,7 +64,12 @@
   </div>
   <!-- line items -->
   <div class="field col-span-6">
-    <LineItemRows {lineItems} on:addLineItem={AddLineItem} on:removeLineItem={RemoveLineItem} />
+    <LineItemRows
+      {lineItems}
+      on:addLineItem={AddLineItem}
+      on:removeLineItem={RemoveLineItem}
+      on:updateLineItem={UpdateLineItem}
+    />
   </div>
   <!-- note -->
   <div class="field col-span-6">
